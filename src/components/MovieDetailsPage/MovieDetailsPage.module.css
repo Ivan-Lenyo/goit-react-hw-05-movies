@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+}
+
+.link {
+  color: rgb(63, 6, 138);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 10%;
+}
+
+.link:hover,
+.link:focus {
+  color: white;
+  background-color: rgb(63, 6, 138);
+}
+
+.img {
+  max-width: 350px;
+}
+
+.mainContent {
+  display: block;
+  margin-left: 15px;
+}
+
+.list {
+  list-style: none;
+}

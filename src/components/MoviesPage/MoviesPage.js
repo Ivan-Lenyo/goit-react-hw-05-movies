@@ -1,5 +1,4 @@
 import s from './MoviesPage.module.css';
-import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import * as MovieApi from '../../services/movieApi';
 import { useState, useEffect } from 'react';

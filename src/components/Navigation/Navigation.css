@@ -1,4 +1,4 @@
-.link {
+.navigationLink {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
@@ -7,7 +7,10 @@
   font-size: 18px;
 }
 
-.active {
-  composes: link;
+.navigationLink:hover {
   color: #2196f3;
+}
+
+.active {
+  color: red;
 }
