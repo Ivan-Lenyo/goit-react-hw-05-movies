@@ -1,17 +1,18 @@
 import s from './MoviesPage.module.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as MovieApi from '../../services/movieApi';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 export default function MoviesPage() {
   const [searchValue, setSearchValue] = useState('');
-  const [movieName, setMovieName] = useState('');
   const [serchMovies, setSearchMovies] = useState([]);
   const location = useLocation();
+  const navigation = useNavigate();
+  const movieName = new URLSearchParams(location.search).get('query') ?? '';
 
   const handleFormSubmit = movieName => {
-    setMovieName(movieName);
+    navigation({ ...location, search: `query=${movieName}` });
   };
 
   const handleSearchChange = event => {
@@ -20,6 +21,8 @@ export default function MoviesPage() {
 
   const handleSubmit = event => {
     event.preventDefault();
+
+    setSearchValue(searchValue.trim());
 
     if (searchValue.trim() === '') {
       return toast.error('Please enter name of search');
@@ -35,7 +38,7 @@ export default function MoviesPage() {
     }
 
     MovieApi.fetchSearchMovies(movieName).then(Data => {
-      setSearchMovies(serchMovies => [...serchMovies, ...Data.results]);
+      setSearchMovies(Data.results);
     });
   }, [movieName]);
 
